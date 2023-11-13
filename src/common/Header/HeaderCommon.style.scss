@@ -1,0 +1,43 @@
+header {
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid var(--vt-c-gold-border);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  font-size: 16px;
+  margin-right: 10px;
+  transition: color 0.3s ease;
+}
+
+.active {
+  color: var(--vt-c-pink-hover);
+}
+
+a:hover {
+  color: var(--vt-c-pink-hover);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 20px;
+  }
+
+  .menu-icon {
+    font-size: 18px;
+  }
+}
