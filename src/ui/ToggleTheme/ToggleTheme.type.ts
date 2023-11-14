@@ -1,4 +1,4 @@
 export type ToggleThemeProps = {
-  theme: string;
+  theme: string
   toggleTheme: () => void
 }

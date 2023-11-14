@@ -6,7 +6,7 @@
       :theme="theme"
       @toggleTheme="toggleTheme"
     />
-    <main>Hello!</main>
+    <main>Search!</main>
     <FooterCommon :link="url" />
   </div>
 </template>
@@ -27,4 +27,4 @@ const toggleTheme = () => {
 }
 </script>
 
-<style scoped="scss" src="./HomeView.style.scss"></style>
+<style scoped="scss" src="./SearchView.style.scss"></style>

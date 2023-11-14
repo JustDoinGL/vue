@@ -1,0 +1,14 @@
+.footer {
+  padding: 10px;
+  text-align: center;
+  border-top: 1px solid var(--vt-c-gold-border);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+a:hover {
+  color: var(--vt-c-pink-hover);
+}

@@ -10,3 +10,5 @@ export const linksHeader: HeaderLinks[] = [
     url: '/search'
   }
 ]
+
+export const linkFooter = 'https://github.com/JustDoinGL/vue'
