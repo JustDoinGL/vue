@@ -6,7 +6,9 @@
       :theme="theme"
       @toggleTheme="toggleTheme"
     />
-    <main>Hello!</main>
+    <main>
+      <HomeMain />
+    </main>
     <FooterCommon :link="url" />
   </div>
 </template>
@@ -17,13 +19,22 @@ import HeaderCommon from '@/common/Header/HeaderCommon.vue'
 import type { HeaderLinks } from '@/interface/links'
 import { linkFooter, linksHeader } from '@/utils/links'
 import FooterCommon from '@/common/Footer/FooterCommon.vue'
+import HomeMain from '@/components/Home/HomeMain.vue'
+import { useRouter } from 'vue-router'
 
-const theme = ref('light')
+const theme = ref('dark')
 const links = ref<HeaderLinks[]>(linksHeader)
 const url = linkFooter
+const router = useRouter()
+
+router.beforeEach(() => {
+  const savedTheme = localStorage.getItem('theme')
+  if (savedTheme === 'light') theme.value = 'light'
+})
 
 const toggleTheme = () => {
   theme.value = theme.value === 'light' ? 'dark' : 'light'
+  localStorage.setItem('theme', theme.value)
 }
 </script>
 

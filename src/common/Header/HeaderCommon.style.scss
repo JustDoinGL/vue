@@ -1,9 +1,9 @@
 header {
-  padding: 10px 5px;
   margin-bottom: 20px;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
   border-bottom: 1px solid var(--vt-c-gold-border);
 }
 
@@ -25,19 +25,4 @@ a {
 
 a:hover {
   color: var(--vt-c-pink-hover);
-}
-
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-@media (max-width: 768px) {
-  .logo {
-    font-size: 20px;
-  }
-
-  .menu-icon {
-    font-size: 18px;
-  }
 }

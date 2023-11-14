@@ -1,7 +1,9 @@
 <template>
   <header>
     <div>
-      <img src="" alt="sss" />
+      <router-link to="/">
+        <LogoHeader :theme="theme" />
+      </router-link>
     </div>
     <nav>
       <template v-for="link in links" :key="link.url">
@@ -9,9 +11,7 @@
       </template>
     </nav>
     <div>
-      <div>
-        <ToggleTheme :toggleTheme="toggleTheme" :theme="theme" @toggleTheme="toggleTheme" />
-      </div>
+      <ToggleTheme :toggleTheme="toggleTheme" :theme="theme" @toggleTheme="toggleTheme" />
     </div>
   </header>
 </template>
@@ -20,6 +20,7 @@
 import { defineProps, toRefs } from 'vue'
 import type { HeaderCommonProps } from './HeaderCommon.types'
 import ToggleTheme from '@/ui/ToggleTheme/ToggleTheme.vue'
+import LogoHeader from '@/assets/svg/Logo/LogoHeader.vue'
 
 const props = defineProps<HeaderCommonProps>()
 
