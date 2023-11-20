@@ -1,15 +1,15 @@
 <template>
   <div class="theme-toggle">
-    <input type="checkbox" id="theme-checkbox" class="theme-checkbox" @change="toggleTheme" />
+    <input type="checkbox" id="theme-checkbox" class="theme-checkbox" @click="toggleTheme" />
     <label for="theme-checkbox" class="theme-toggle-label">
       <template v-if="theme !== 'dark'">
         <span class="sun">
-          <SunToggle :theme="theme" />
+          <SunToggle />
         </span>
       </template>
       <template v-else>
         <span class="moon">
-          <MoonToggle :theme="theme" />
+          <MoonToggle />
         </span>
       </template>
     </label>
@@ -17,14 +17,16 @@
 </template>
 
 <script setup lang="ts">
-import { toRefs } from 'vue'
-import type { ToggleThemeProps } from './ToggleTheme.type'
 import SunToggle from '@/assets/svg/ToggleMoonSun/SunToggle.vue'
 import MoonToggle from '@/assets/svg/ToggleMoonSun/MoonToggle.vue'
+import { useThemeStore } from '@/stores/theme'
+import { useRouter } from 'vue-router'
+import { BreadCrumbs } from '@/utils/BreadCrumbs.type'
 
-const props = defineProps<ToggleThemeProps>()
+const { theme, toggleTheme } = useThemeStore()
+const router = useRouter()
 
-const { theme, toggleTheme } = toRefs(props)
+router.push(BreadCrumbs(router, theme))
 </script>
 
-<style scoped src="./ToggleTheme.style.scss"></style>
+<style scoped="scss" src="./ToggleTheme.style.scss"></style>

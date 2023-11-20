@@ -2,7 +2,7 @@
   <header>
     <div>
       <router-link to="/">
-        <LogoHeader :theme="theme" />
+        <LogoHeader />
       </router-link>
     </div>
     <nav>
@@ -11,19 +11,18 @@
       </template>
     </nav>
     <div>
-      <ToggleTheme :toggleTheme="toggleTheme" :theme="theme" @toggleTheme="toggleTheme" />
+      <ToggleTheme />
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
-import { defineProps, toRefs } from 'vue'
+import { toRefs } from 'vue'
 import type { HeaderCommonProps } from './HeaderCommon.types'
 import ToggleTheme from '@/ui/ToggleTheme/ToggleTheme.vue'
 import LogoHeader from '@/assets/svg/Logo/LogoHeader.vue'
 
 const props = defineProps<HeaderCommonProps>()
-
 const { links } = toRefs(props)
 </script>
 

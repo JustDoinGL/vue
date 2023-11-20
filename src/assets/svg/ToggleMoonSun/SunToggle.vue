@@ -11,12 +11,9 @@
 </template>
 
 <script setup lang="ts">
-import { toRefs } from 'vue'
-import type { ToggleMoonSunProps } from './ToggleMoonSun.type'
+import { useThemeStore } from '@/stores/theme'
 
-const props = defineProps<ToggleMoonSunProps>()
-
-const { theme } = toRefs(props)
+const { theme } = useThemeStore()
 </script>
 
 <style scoped src="./MoonToggle.style.scss"></style>

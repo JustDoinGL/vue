@@ -1,3 +1,1 @@
-export type LogoHeaderProps = {
-  theme: string
-}
+export type LogoHeaderProps = {}

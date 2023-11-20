@@ -1,3 +1,1 @@
-export type ToggleMoonSunProps = {
-  theme: string
-}
+export type ToggleMoonSunProps = {}

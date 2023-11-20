@@ -6,8 +6,8 @@ export const linksHeader: HeaderLinks[] = [
     url: '/'
   },
   {
-    nameUrl: 'Search',
-    url: '/search'
+    nameUrl: 'Login',
+    url: '/login'
   }
 ]
 

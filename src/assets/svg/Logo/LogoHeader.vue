@@ -76,12 +76,9 @@
 </template>
 
 <script setup lang="ts">
-import { toRefs } from 'vue'
-import type { LogoHeaderProps } from './LogoHeader.type'
+import { useThemeStore } from '@/stores/theme'
 
-const props = defineProps<LogoHeaderProps>()
-
-const { theme } = toRefs(props)
+const { theme } = useThemeStore()
 </script>
 
 <style scoped src="./LogoHeader.style.scss"></style>
