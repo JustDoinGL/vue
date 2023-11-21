@@ -1,12 +1,12 @@
 <template>
   <MainLayout>
-    <HomeMain />
+    <PostsMain />
   </MainLayout>
 </template>
 
 <script setup lang="ts">
-import HomeMain from '@/components/Home/HomeMain.vue'
+import PostsMain from '@/components/Posts/PostsMain.vue'
 import MainLayout from '@/layouts/MainLayout/MainLayout.vue'
 </script>
 
-<style scoped="scss" src="./HomeView.style.scss"></style>
+<style scoped="scss" src="./PostsView.style.scss"></style>

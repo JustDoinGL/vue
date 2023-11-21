@@ -77,8 +77,10 @@
 
 <script setup lang="ts">
 import { useThemeStore } from '@/stores/theme'
+import { storeToRefs } from 'pinia'
 
-const { theme } = useThemeStore()
+const store = useThemeStore()
+const { theme } = storeToRefs(store)
 </script>
 
 <style scoped src="./LogoHeader.style.scss"></style>

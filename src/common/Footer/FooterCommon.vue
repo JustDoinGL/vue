@@ -3,19 +3,19 @@
     <div class="container">
       <p>&copy; {{ currentYear }} My Website</p>
       <p>
-        <a :href="link" target="_blank">GitHub</a>
+        <a :href="linksFooter" target="_blank">GitHub</a>
       </p>
     </div>
   </footer>
 </template>
 
 <script setup lang="ts">
-import { ref, toRefs } from 'vue'
-import type { FooterCommonProps } from './FooterCommon.types'
+import { useLinksHeaderFooterStore } from '@/stores/linksHeaderFooter'
+import { storeToRefs } from 'pinia'
+import { ref } from 'vue'
 
-const props = defineProps<FooterCommonProps>()
-
-const { link } = toRefs(props)
+const linksStore = useLinksHeaderFooterStore()
+const { linksFooter } = storeToRefs(linksStore)
 
 const currentYear = ref(new Date().getFullYear())
 </script>
