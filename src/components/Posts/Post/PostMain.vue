@@ -7,11 +7,11 @@
 </template>
 
 <script setup lang="ts">
-import { toRefs } from 'vue'
+import { defineProps } from 'vue'
 import type { PostMainProps } from './PostMain.type'
 
 const props = defineProps<PostMainProps>()
-const { body, title, userId } = toRefs(props.post)
+const { body, title, userId } = props.post
 </script>
 
 <style scoped="scss" src="./PostMain.style.scss"></style>

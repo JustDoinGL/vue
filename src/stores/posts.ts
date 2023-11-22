@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 import type { Posts } from '@/interface/posts'
 
-export const usePostsStore = defineStore('post', () => {
+export const usePostsStore = defineStore('posts', () => {
   const posts = ref<Posts>([])
   const isLoading = ref(false)
   const isError = ref(false)
@@ -13,13 +13,17 @@ export const usePostsStore = defineStore('post', () => {
   const currentPage = ref(1)
 
   const getPosts = async () => {
+    if (isError.value) return
+
     if (currentPage.value * postsPerPage.value <= totalPosts.value) {
       try {
         isLoading.value = true
         isError.value = false
+
         const response = await axios.get(
           `https://jsonplaceholder.typicode.com/posts?_limit=${postsPerPage.value}&_page=${currentPage.value}`
         )
+
         const newPosts = response.data
         posts.value = [...posts.value, ...newPosts]
         totalPosts.value = parseInt(response.headers['x-total-count'])

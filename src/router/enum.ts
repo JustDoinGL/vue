@@ -1,6 +1,7 @@
 export enum Links {
-  POSTS = '/',
-  LOGIN = '/login'
+  LOGIN = '/',
+  POSTS = '/posts',
+  POST = '/post/:id'
 }
 
 export enum PathNames {
