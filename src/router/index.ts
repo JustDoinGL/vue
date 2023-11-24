@@ -4,6 +4,7 @@ import LoginView from '@/views/Login/LoginView.vue'
 import PostsView from '@/views/Posts/PostsView.vue'
 import { Links, PathNames } from './enum'
 import PostView from '@/views/Post/PostView.vue'
+import { useLoginStore } from '@/stores/login'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,14 +17,28 @@ const router = createRouter({
     {
       path: Links.POSTS,
       name: PathNames.POSTS,
-      component: PostsView
+      component: PostsView,
+      meta: { requiresAuth: true }
     },
     {
       path: Links.POST,
       name: PathNames.POST,
-      component: PostView
+      component: PostView,
+      meta: { requiresAuth: true }
     }
   ]
 })
+
+
+
+router.beforeEach(async (to) => {
+  const publicPages = ['/'];
+  const authRequired = !publicPages.includes(to.path);
+  const auth = useLoginStore();
+
+  if (authRequired && !auth.isLoggedIn) {
+      return '/';
+  }
+});
 
 export default router

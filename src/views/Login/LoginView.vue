@@ -1,11 +1,11 @@
 <template>
   <MainLayout>
-    <SearchMain />
+    <LoginMain />
   </MainLayout>
 </template>
 
 <script setup lang="ts">
-import SearchMain from '@/components/Search/SearchMain.vue'
+import LoginMain from '@/components/Login/LoginMain.vue'
 import MainLayout from '@/layouts/MainLayout/MainLayout.vue'
 </script>
 

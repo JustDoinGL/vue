@@ -1,17 +1,15 @@
 <template>
-  <div>
-    <MainLayout>
-      <template v-if="post">
-        <PostMain :post="post" />
-      </template>
-      <template v-if="isLoading">
-        <LoadingUI :isLoading="isLoading" />
-      </template>
-      <template v-if="isError">
-        <ErrorUI message="Ошибка" />
-      </template>
-    </MainLayout>
-  </div>
+  <MainLayout>
+    <div class="main" v-if="post">
+      <PostMain :post="post" />
+    </div>
+    <template v-if="isLoading">
+      <LoadingUI :isLoading="isLoading" />
+    </template>
+    <template v-if="isError">
+      <ErrorUI message="Ошибка" />
+    </template>
+  </MainLayout>
 </template>
 
 <script setup lang="ts">
@@ -26,7 +24,8 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 const id = String(route.params.id)
 const store = usePostStore()
-console.log(id)
 store.getPost(id)
 const { post, isError, isLoading } = storeToRefs(store)
 </script>
+
+<style scoped="scss" src="./PostView.style.scss"></style>

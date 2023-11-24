@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="post in posts" :key="post.id">
+    <div class="active" v-for="post in posts" :key="post.id">
       <router-link :to="{ name: PathNames.POST, query: $route.query, params: { id: post.id } }">
         <PostMain :post="post" />
       </router-link>
@@ -41,3 +41,5 @@ useInfiniteScroll(
   { distance: 10 }
 )
 </script>
+
+<style scoped="scss" src="./PostsMain.style.scss"></style>
