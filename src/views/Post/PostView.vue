@@ -1,5 +1,6 @@
 <template>
   <MainLayout>
+    <HelperHeader />
     <div class="main" v-if="post">
       <PostMain :post="post" />
     </div>
@@ -13,6 +14,7 @@
 </template>
 
 <script setup lang="ts">
+import HelperHeader from '@/common/HelperHeader/HelperHeader.vue'
 import PostMain from '@/components/Posts/Post/PostMain.vue'
 import MainLayout from '@/layouts/MainLayout/MainLayout.vue'
 import { usePostStore } from '@/stores/post'
