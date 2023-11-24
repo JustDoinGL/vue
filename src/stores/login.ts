@@ -11,8 +11,8 @@ export const useLoginStore = defineStore('login', () => {
     const user = loginPassword.value.find(
       (user) => user.login === username.value && user.password === password.value
     )
+    isLoggedIn.value = !!user
     if (user) {
-      isLoggedIn.value = !!user
       username.value = ''
       password.value = ''
     }
