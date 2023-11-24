@@ -1,7 +1,7 @@
 <template>
   <MainLayout>
-    <HelperHeader />
     <div class="main" v-if="post">
+      <HelperHeader />
       <PostMain :post="post" />
     </div>
     <template v-if="isLoading">
