@@ -29,16 +29,14 @@ const router = createRouter({
   ]
 })
 
-
-
 router.beforeEach(async (to) => {
-  const publicPages = ['/'];
-  const authRequired = !publicPages.includes(to.path);
-  const auth = useLoginStore();
+  const publicPages = ['/']
+  const authRequired = !publicPages.includes(to.path)
+  const auth = useLoginStore()
 
   if (authRequired && !auth.isLoggedIn) {
-      return '/';
+    return '/'
   }
-});
+})
 
 export default router
