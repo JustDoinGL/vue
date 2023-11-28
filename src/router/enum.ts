@@ -5,7 +5,7 @@ export enum Links {
 }
 
 export enum PathNames {
-  LOGIN = 'Login',
+  LOGIN = 'Profile',
   POSTS = 'Posts',
   POST = 'Post'
 }

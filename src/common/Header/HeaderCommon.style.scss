@@ -26,3 +26,9 @@ a {
 a:hover {
   color: var(--vt-c-pink-hover);
 }
+
+.helpers {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}

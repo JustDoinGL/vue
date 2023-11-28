@@ -18,6 +18,7 @@ input {
   width: 100%;
   padding: 8px;
   margin-bottom: 12px;
+  border: 1px solid gold;
 }
 
 button {
@@ -25,4 +26,27 @@ button {
   padding: 8px 16px;
   border: none;
   cursor: pointer;
+  margin-right: 10px;
+}
+
+button:last-child {
+  margin-right: 0px;
+}
+
+button:hover {
+  background: red;
+}
+
+h3 {
+  color: red;
+  font-size: 20px;
+}
+
+.input-error {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  margin-top: 5px;
 }
