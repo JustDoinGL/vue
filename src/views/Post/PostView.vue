@@ -17,7 +17,7 @@
 import HelperHeader from '@/common/HelperHeader/HelperHeader.vue'
 import PostMain from '@/components/Posts/Post/PostMain.vue'
 import MainLayout from '@/layouts/MainLayout/MainLayout.vue'
-import { usePostStore } from '@/stores/post'
+import { usePostStore } from '@/stores/getPost'
 import ErrorUI from '@/ui/LoadingErrorEnd/Error/ErrorUI.vue'
 import LoadingUI from '@/ui/LoadingErrorEnd/Loading/LoadingUI.vue'
 import { storeToRefs } from 'pinia'
@@ -31,3 +31,4 @@ const { post, isError, isLoading } = storeToRefs(store)
 </script>
 
 <style scoped="scss" src="./PostView.style.scss"></style>
+@/stores/getPost

@@ -8,12 +8,12 @@ export const usePostsStore = defineStore('posts', () => {
   const isLoading = ref(false)
   const isError = ref(false)
   const isEnd = ref(false)
-  const totalPosts = ref(100)
-  const postsPerPage = ref(10)
+  const totalPosts = ref(Infinity)
+  const postsPerPage = ref(5)
   const currentPage = ref(1)
 
   const getPosts = async () => {
-    if (isError.value) return
+    if (isError.value || isLoading.value) return
 
     if (currentPage.value * postsPerPage.value <= totalPosts.value) {
       try {

@@ -25,9 +25,9 @@ export const usePostStore = defineStore('post', () => {
   }
 
   return {
-    post,
     isLoading,
     isError,
+    post,
     getPost
   }
 })

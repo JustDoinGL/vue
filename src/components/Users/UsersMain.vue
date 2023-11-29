@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="active" v-for="post in posts" :key="post.id">
-      <router-link :to="{ name: PathNames.POST, query: $route.query, params: { id: post.id } }">
-        <PostMain :post="post" />
+    <div v-for="user in users" :key="user.id">
+      <router-link :to="{ name: PathNames.POST, query: $route.query, params: { id: user.id } }">
+        <UserMain :user="user" />
       </router-link>
     </div>
     <div>
@@ -20,26 +20,27 @@
 
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { usePostsStore } from '@/stores/getPosts'
-import PostMain from './Post/PostMain.vue'
 import LoadingErrorEnd from '@/ui/LoadingErrorEnd/LoadingErrorEnd.vue'
-
 import { useInfiniteScroll } from '@vueuse/core'
 import { ref } from 'vue'
 import { PathNames } from '@/router/enum'
+import { useUsersStore } from '@/stores/getUsers'
+import UserMain from './User/UserMain.vue'
 
-const store = usePostsStore()
-const { posts, isLoading, isError, isEnd } = storeToRefs(store)
+const store = useUsersStore()
+const { users, isLoading, isError, isEnd } = storeToRefs(store)
 
 const el = ref<HTMLElement | null>(null)
 
 useInfiniteScroll(
   el,
   () => {
-    store.getPosts()
+    if (isLoading) {
+      store.getUsers()
+    }
   },
   { distance: 5 }
 )
 </script>
 
-<style scoped="scss" src="./PostsMain.style.scss"></style>
+<style scoped="scss" src="./UsersMain.style.scss"></style>
