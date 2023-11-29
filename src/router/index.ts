@@ -30,12 +30,12 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to) => {
-  const publicPages = ['/']
+  const publicPages = [`${Links.LOGIN}`]
   const authRequired = !publicPages.includes(to.path)
   const auth = useLoginStore()
 
   if (authRequired && !auth.isLoggedIn) {
-    return '/'
+    return `${Links.LOGIN}`
   }
 })
 

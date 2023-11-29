@@ -7,6 +7,8 @@
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build",
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
@@ -30,6 +32,7 @@
     "@vue/tsconfig": "^0.4.0",
     "eslint": "^8.49.0",
     "eslint-plugin-vue": "^9.17.0",
+    "gh-pages": "^6.1.0",
     "npm-run-all2": "^6.1.1",
     "prettier": "^3.0.3",
     "sass": "^1.69.5",

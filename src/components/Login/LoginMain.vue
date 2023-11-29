@@ -29,8 +29,7 @@ import ProfileMain from './Profile/ProfileMain.vue'
 
 const store = useLoginStore()
 
-const { isLoggedIn, isRegistration, isFailLogin, password, username } =
-  storeToRefs(store)
+const { isLoggedIn, isRegistration, isFailLogin, password, username } = storeToRefs(store)
 
 const submitForm = () => {
   store.loginUser()
