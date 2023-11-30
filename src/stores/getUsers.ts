@@ -9,26 +9,39 @@ export const useUsersStore = defineStore('users', () => {
   const isLoading = ref(false)
   const isError = ref(false)
   const isEnd = ref(false)
+  const isSearch = ref(false)
+  const isFound = ref(true)
   const totalUsers = ref(Infinity)
   const usersPerPage = ref(5)
   const currentPage = ref(1)
+  let searchTimeout: number | null = null
 
-  const getUsers = async () => {
+  const getUsers = async (
+    url = `https://jsonplaceholder.typicode.com/users?_limit=${usersPerPage.value}&_page=${currentPage.value}`,
+    search = false
+  ) => {
     if (isError.value || isLoading.value) return
 
-    if (currentPage.value * usersPerPage.value <= totalUsers.value) {
+    if (currentPage.value * usersPerPage.value <= totalUsers.value || search === true) {
       try {
         isLoading.value = true
         isError.value = false
+        isFound.value = false
 
-        const response = await axios.get(
-          `https://jsonplaceholder.typicode.com/users?_limit=${usersPerPage.value}&_page=${currentPage.value}`
-        )
+        const response = await axios.get(url)
 
         const newUsers = response.data
-        users.value = [...users.value, ...newUsers]
-        totalUsers.value = parseInt(response.headers['x-total-count'])
-        currentPage.value++
+
+        if (search && textSearch.value.length > 0) {
+          users.value = newUsers
+          if (users.value.length === 0) {
+            isFound.value = true
+          }
+        } else {
+          users.value = [...users.value, ...newUsers]
+          totalUsers.value = parseInt(response.headers['x-total-count'])
+          currentPage.value++
+        }
       } catch (error) {
         console.error('Ошибка при получении постов:', error)
         isError.value = true
@@ -40,12 +53,40 @@ export const useUsersStore = defineStore('users', () => {
     }
   }
 
+  const searchPosts = async () => {
+    if (textSearch.value.length > 0) {
+      isSearch.value = true
+      isEnd.value = false
+      await getUsers(
+        `https://jsonplaceholder.typicode.com/users?q=${textSearch.value}`,
+        true
+      )
+    } else {
+      isSearch.value = false
+      currentPage.value = 0
+      await getUsers()
+    }
+  }
+
+  const handleInput = () => {
+    if (searchTimeout) {
+      clearTimeout(searchTimeout)
+    }
+    searchTimeout = setTimeout(() => {
+      searchPosts()
+    }, 600)
+  }
+
   return {
     textSearch,
     users,
     isLoading,
     isError,
     isEnd,
-    getUsers
+    isSearch,
+    isFound,
+    getUsers,
+    searchPosts,
+    handleInput
   }
 })

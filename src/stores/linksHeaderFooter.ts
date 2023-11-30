@@ -9,11 +9,11 @@ export const useLinksHeaderFooterStore = defineStore('LinksHeaderFooter', () => 
       nameUrl: PathNames.POSTS,
       url: Links.POSTS
     },
+    { nameUrl: PathNames.USERS, url: Links.USERS },
     {
       nameUrl: PathNames.LOGIN,
       url: Links.LOGIN
-    },
-    { nameUrl: PathNames.USERS, url: Links.USERS }
+    }
   ])
 
   const linksFooter = ref<string>('https://github.com/JustDoinGL/vue')
