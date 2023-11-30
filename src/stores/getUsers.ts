@@ -26,7 +26,7 @@ export const useUsersStore = defineStore('users', () => {
       try {
         isLoading.value = true
         isError.value = false
-        isFound.value = false
+        isFound.value = true
 
         const response = await axios.get(url)
 
@@ -34,8 +34,8 @@ export const useUsersStore = defineStore('users', () => {
 
         if (search && textSearch.value.length > 0) {
           users.value = newUsers
-          if (users.value.length === 0) {
-            isFound.value = true
+          if (newUsers.length === 0) {
+            isFound.value = false
           }
         } else {
           users.value = [...users.value, ...newUsers]
@@ -56,13 +56,8 @@ export const useUsersStore = defineStore('users', () => {
   const searchPosts = async () => {
     if (textSearch.value.length > 0) {
       isSearch.value = true
-      isEnd.value = false
-      await getUsers(
-        `https://jsonplaceholder.typicode.com/users?q=${textSearch.value}`,
-        true
-      )
+      await getUsers(`https://jsonplaceholder.typicode.com/users?q=${textSearch.value}`, true)
     } else {
-      isSearch.value = false
       currentPage.value = 0
       await getUsers()
     }
