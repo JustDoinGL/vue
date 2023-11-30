@@ -10,7 +10,7 @@
         </router-link>
       </div>
     </div>
-    <div v-if="!isSearch">
+    <div v-if="isFound">
       <LoadingErrorEnd
         :isLoading="isLoading"
         :isError="isError"
@@ -18,7 +18,7 @@
         error-message="Error"
         end-message="End"
       />
-      <div ref="el"></div>
+      <div v-if="!isSearch" ref="el"></div>
     </div>
     <div v-else-if="!isFound" class="notFound">Users are not found</div>
   </div>
