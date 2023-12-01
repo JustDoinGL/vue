@@ -22,10 +22,6 @@ export const useUsersStore = defineStore('users', () => {
   ) => {
     if (isError.value || isLoading.value) return
 
-    if (textSearch.value.length === 0) {
-      isSearch.value = false
-    }
-
     if (currentPage.value * usersPerPage.value <= totalUsers.value || search === true) {
       try {
         isLoading.value = true
@@ -64,6 +60,8 @@ export const useUsersStore = defineStore('users', () => {
       await getUsers(`https://jsonplaceholder.typicode.com/users?q=${textSearch.value}`, true)
     } else {
       currentPage.value = 0
+      isSearch.value = false
+      users.value = []
       await getUsers()
     }
   }
