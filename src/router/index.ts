@@ -6,6 +6,7 @@ import { Links, PathNames } from './enum'
 import PostView from '@/views/Post/PostView.vue'
 import { useLoginStore } from '@/stores/login'
 import UsersView from '@/views/Users/UsersView.vue'
+import UserView from '@/views/User/UserView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,6 +32,12 @@ const router = createRouter({
       path: Links.USERS,
       name: PathNames.USERS,
       component: UsersView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: Links.USER,
+      name: PathNames.USER,
+      component: UserView,
       meta: { requiresAuth: true }
     }
   ]

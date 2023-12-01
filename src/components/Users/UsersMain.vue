@@ -5,7 +5,7 @@
     </div>
     <div class="users">
       <div v-for="user in users" :key="user.id">
-        <router-link :to="{ name: PathNames.POST, query: $route.query, params: { id: user.id } }">
+        <router-link :to="{ name: PathNames.USER, query: $route.query, params: { id: user.id } }">
           <UserMain :user="user" />
         </router-link>
       </div>

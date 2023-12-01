@@ -1,1 +1,3 @@
-export type HelperHeaderProps = {}
+export type HelperHeaderProps = {
+  backTo: string
+}
