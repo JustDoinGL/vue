@@ -18,6 +18,7 @@
       <button @click="store.toggleRegistration" v-if="!isRegistration">Registration</button>
 
       <button @click="store.registerUser" v-if="isRegistration">Registration</button>
+      <button @click="store.toggleLogin" v-if="isRegistration">Back to Login</button>
     </form>
   </div>
 </template>

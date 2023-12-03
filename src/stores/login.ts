@@ -58,6 +58,11 @@ export const useLoginStore = defineStore('login', () => {
     password.value = ''
   }
 
+  const toggleLogin = () => {
+    isRegistration.value = !isRegistration.value
+    clearCredentials()
+  }
+
   return {
     isLoggedIn,
     isRegistration,
@@ -70,6 +75,7 @@ export const useLoginStore = defineStore('login', () => {
     loginUser,
     logoutUser,
     toggleRegistration,
-    registerUser
+    registerUser,
+    toggleLogin
   }
 })
